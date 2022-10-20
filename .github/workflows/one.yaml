@@ -1,0 +1,36 @@
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        type: string
+        description: 'Optional: Commit, branch etc.'  
+        required: false
+      skip-tests:
+        type: boolean
+        required: false
+        default: false
+      environment:
+        type: environment
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Foo
+        run: echo "${{ inputs.environment }}"
+        shell: bash
+
+  foo:
+    runs-on: ubuntu-latest
+    environment: foo
+    steps:
+      - name: Foo
+        run: echo "${{ inputs.environment }}"
+        shell: bash
+  bar:
+    runs-on: ubuntu-latest
+    environment: bar
+    steps:
+      - name: Foo
+        run: echo "${{ inputs.environment }}"
+        shell: bash
