@@ -23,6 +23,8 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     environment: foo
+    needs:
+      - test
     steps:
       - name: Foo
         run: echo "${{ inputs.environment }}"
@@ -30,6 +32,8 @@ jobs:
   bar:
     runs-on: ubuntu-latest
     environment: bar
+    needs:
+      - test
     steps:
       - name: Foo
         run: echo "${{ inputs.environment }}"
