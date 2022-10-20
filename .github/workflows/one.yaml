@@ -38,3 +38,14 @@ jobs:
       - name: Foo
         run: echo "${{ inputs.environment }}"
         shell: bash
+
+  auto:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+    needs:
+      - test
+    steps:
+      - name: Foo
+        run: echo "${{ inputs.environment }}"
+        shell: bash
+  
